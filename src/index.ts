@@ -1,12 +1,22 @@
 import express, { Application } from 'express';
 import dotenv from 'dotenv';
+import userRoute from './routes/user-route';
 
 dotenv.config();
-const app : Application= express();
+const app: Application = express();
 const port = process.env.PORT;
 
+app.use(express.json());
+app.use('/api', userRoute);
 app.get('/', (req, res) => {
-  res.json({testing :"blabala"})
+  res.status(200).json({
+    status: 200,
+    name: 'Ekiww-Public-Api',
+    version: '1.0.0',
+    docs_link: 'https://comingsoon.com/docs',
+    health_check: '100',
+    is_open: true,
+  });
 });
 app.listen(port, () => {
   console.log(`server is running in ${port}`);

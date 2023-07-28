@@ -14,7 +14,7 @@ model User {
   username String @id @db.VarChar(100)
   password String @db.VarChar(100)
   name String @db.VarChar(100)
-  token String @db.VarChar(100)
+  token String? @db.VarChar(100)
   notes Notes []
 
   @@map("users")
@@ -22,12 +22,13 @@ model User {
 
 model Notes {
     id Int @id @default(autoincrement())
-    title      String
+    title      String?
     tag String? @db.VarChar(100)  
     Notes String? @db.Text
     createdAt  DateTime   @default(now())
     updatedAt  DateTime   @updatedAt
     username String @db.VarChar(100)
+    
 
     user User @relation(fields: [username], references: [username])
 }
