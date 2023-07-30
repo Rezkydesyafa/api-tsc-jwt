@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import { UserInterface, loginInterface } from '../types/user-types';
 
-export const registerUserValidations = (payload: UserInterface) => {
+export const registerUserValidation = (payload: UserInterface) => {
   const schema = Joi.object({
     username: Joi.string().max(100).required(),
     password: Joi.string().max(100).required(),

@@ -1,3 +1,5 @@
+import { Request } from 'express';
+
 interface UserInterface {
   username: String;
   password: String;
@@ -8,4 +10,7 @@ interface loginInterface {
   password: String;
 }
 
-export { UserInterface, loginInterface };
+interface TokenInterface extends Request {
+  refreshToken: string;
+}
+export { UserInterface, loginInterface, TokenInterface };

@@ -1,9 +1,9 @@
 import express from 'express';
-import { getUser } from '../controllers/user-controller';
 import { verifyToken } from '../middleware/verifytoken';
+import { create } from '../controllers/notes-controller';
 
 const router = express.Router();
 
-router.get('/user', verifyToken, getUser);
+router.post('/notes', verifyToken, create);
 
 export default router;

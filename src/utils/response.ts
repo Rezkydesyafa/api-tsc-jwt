@@ -1,6 +1,12 @@
 import { Response } from 'express';
 
-const Sucess = (message: string, payload: any, res: Response) => {
+const Sucess = (
+  message: string,
+  payload: any,
+  statusCode: number,
+  res: Response
+) => {
+  res.status(statusCode);
   const datas = {
     success: true,
     statusCode: res.statusCode,
