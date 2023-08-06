@@ -10,12 +10,12 @@ import {
 } from '../types/user-types';
 import {
   loginValidation,
-  registerUserValidation,
+  registerValidation,
 } from '../validations/user.validation';
 import { logger } from '../utils/logging';
 
 export const registerUser = async (request: UserInterface) => {
-  const { error, value } = await registerUserValidation(request);
+  const { error, value } = await registerValidation(request);
   if (error) {
     logger.error('validate erros', error.details[0].message);
     throw Error(error.details[0].message);
@@ -101,7 +101,7 @@ export const refreshToken = async (req: TokenInterface, res: Response) => {
         { username, user },
         CONFIG.acceesTokenSecret,
         {
-          expiresIn: '30s',
+          expiresIn: '160s',
         }
       );
       return accesToken;

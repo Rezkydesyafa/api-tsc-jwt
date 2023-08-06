@@ -9,8 +9,11 @@ interface loginInterface {
   username: String;
   password: String;
 }
-
+interface updateInterface {
+  name: string;
+  password?: string;
+}
 interface TokenInterface extends Request {
   refreshToken: string;
 }
-export { UserInterface, loginInterface, TokenInterface };
+export { UserInterface, loginInterface, TokenInterface, updateInterface };
