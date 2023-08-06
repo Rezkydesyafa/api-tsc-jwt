@@ -4,3 +4,4 @@ node_modules
 yarn.lock
 nodemon.json
 yarn-error.log
+request.rest
