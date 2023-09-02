@@ -2,8 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const CONFIG = {
-  acceesTokenSecret: 'awsdhjkaklhjdkghjqlwgtuiklr234gilyilu',
-  refreshTokenSecret: 'rezky0712197505',
+  acceesTokenSecret: process.env.ACCESS_TOKEN_SECRET,
+  refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
 };
 
 export default CONFIG;
