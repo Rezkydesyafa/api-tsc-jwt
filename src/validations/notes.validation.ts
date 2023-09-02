@@ -19,3 +19,13 @@ export const updateNotesValidate = (payload: IupdateNotes) => {
   });
   return schema.validate(payload);
 };
+
+export const searchValidation = (payload: any) => {
+  const schema = Joi.object({
+    page: Joi.number().min(1).positive().default(1),
+    size: Joi.number().min(1).max(100).positive().default(10),
+    title: Joi.string().optional(),
+    notes: Joi.string().optional(),
+  });
+  return schema.validate(payload);
+};

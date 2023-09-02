@@ -22,7 +22,7 @@ model User {
 
 model Notes {
     id Int @id @default(autoincrement())
-    title      String?
+    title String?
     tag String? @db.VarChar(100)  
     Notes String? @db.Text
     createdAt  DateTime   @default(now())

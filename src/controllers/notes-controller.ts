@@ -3,6 +3,7 @@ import {
   createNotes,
   deleteNotes,
   getNotes,
+  searchNotes,
   updateNotes,
 } from '../services/notes-service';
 import { logger } from '../utils/logging';
@@ -22,7 +23,6 @@ export const get = async (req: Request, res: Response) => {
 export const create = async (req: Request, res: Response) => {
   try {
     const result = await createNotes(req.body);
-
     response.Sucess('created succes', result, 201, res);
     logger.info('notes-  created notes succes');
   } catch (error) {
@@ -51,6 +51,24 @@ export const remove = async (req: Request, res: Response) => {
     const result = await deleteNotes(req.body, res);
     response.Sucess('OK', result, 200, res);
     logger.info('delete-  delete notes succes');
+  } catch (error) {
+    logger.error(error.message);
+    response.Error(error.message, 400, res);
+  }
+};
+
+export const search = async (req: Request, res: Response) => {
+  try {
+    const username = req.body.username;
+    const payload = {
+      page: req.query.page,
+      size: req.query.size,
+      title: req.query.title,
+      notes: req.query.notes,
+    };
+    const result = await searchNotes(payload, username);
+    response.Sucess('OK', result, 200, res);
+    logger.info('get-  getting notes succes');
   } catch (error) {
     logger.error(error.message);
     response.Error(error.message, 400, res);

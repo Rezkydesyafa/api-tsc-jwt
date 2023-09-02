@@ -13,8 +13,6 @@ export const fetchUser = async () => {
 };
 
 export const updateUser = async (payload, res) => {
-  console.log(payload);
-
   const { error, value } = await updateValidation(payload);
   if (error) {
     logger.error('validate erros', error.details[0].message);
